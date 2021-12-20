@@ -12,7 +12,7 @@ import (
 	"time"
 	"unicode"
 
-	"github.com/MichaelMure/go-term-text"
+	text "github.com/MichaelMure/go-term-text"
 	"github.com/alecthomas/chroma"
 	"github.com/alecthomas/chroma/formatters"
 	"github.com/alecthomas/chroma/lexers"
@@ -21,7 +21,7 @@ import (
 	"github.com/fatih/color"
 	md "github.com/gomarkdown/markdown"
 	"github.com/gomarkdown/markdown/ast"
-	"github.com/kyokomi/emoji/v2"
+	emoji "github.com/kyokomi/emoji/v2"
 	"golang.org/x/net/html"
 
 	htmlWalker "github.com/MichaelMure/go-term-markdown/html"
@@ -370,7 +370,7 @@ func (r *renderer) RenderNode(w io.Writer, node ast.Node, entering bool) ast.Wal
 		r.inlineAccumulator.WriteString("\n")
 
 	case *ast.Code:
-		r.inlineAccumulator.WriteString(BlueBgItalic(string(node.Literal)))
+		r.inlineAccumulator.WriteString(BlueFgItalic(string(node.Literal)))
 
 	case *ast.HTMLSpan:
 		r.inlineAccumulator.WriteString(Red(string(node.Literal)))
